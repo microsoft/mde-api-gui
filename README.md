@@ -1,14 +1,30 @@
-# Project
+# GUI for MDE API sample app
+Simple PowerShell GUI for Microsoft Defender for Endpoint API machine actions.
+![image](https://user-images.githubusercontent.com/25099900/195406810-55511f50-d1c7-4e80-94e1-945cfca2a219.png)
+## Get started
+1. Create Azure AD application as described here: https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/apis-intro?view=o365-worldwide
+2. Grant the following API permissions to the application:
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+| Permission | Description |
+|-------------------------|----------------------|
+| AdvancedQuery.Read.All	| Run advanced queries |
+| Machine.Isolate |	Isolate machine |
+| Machine.ReadWrite.All |	Read and write all machine information (used for tagging) |
+| Machine.Scan |	Scan machine |
 
-As the maintainer of this project, please make a few updates:
-
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+3. Create application secret.
+## Usage
+1. **Connect** with AAD Tenant ID, Application Id and Application Secret of the application created earlier.
+2. **Get Devices** that you want to perform actions on, using one of the following methods:
+    * Advanced Hunting query (query result should contain DeviceName and DeviceId fields)
+    * CSV file (single Name column with machine FQDNs)
+    * Devices list separated with commas
+3. Confirm selection in PowerShell forms pop-up.
+4. Choose action that you want to perform on **Selected Devices**, the following actions are currently available:
+    * Specify device tag in text box and **Apply tag**.
+    * Run **AV Scan**.
+    * **Isolate**/Release device.
+5. Verify actions result with **Logs** text box.
 
 ## Contributing
 
